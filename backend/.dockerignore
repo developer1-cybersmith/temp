@@ -1,0 +1,8 @@
+node_modules
+dist
+.env
+.env.*
+auth_sessions
+auth_sessions_v2
+*.log
+.git
