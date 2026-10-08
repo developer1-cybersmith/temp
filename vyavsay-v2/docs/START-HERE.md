@@ -5,7 +5,7 @@
 2. Split along the seam. Dev A owns the system that holds state and does side effects. Dev B owns the thinking that produces a proposal.
 3. The two meet only at `app/ports/agent.py` and `app/ports/agent_reads.py`. Each side builds against fakes of the other (`ScriptedAgent`, in-memory read ports).
 4. Each developer decides inside their area without asking. Anything crossing the seam needs both.
-5. Individual work lists come after this page is agreed.
+5. Each developer's work list is in [`BACKLOG.md`](BACKLOG.md). The repo `README.md` explains the whole project for a newcomer.
 
 ## 1. Ownership by folder
 | Area | Dev A: backend and platform | Dev B: agent |

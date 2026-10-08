@@ -1,9 +1,9 @@
 <!-- bmad:context -->
-<!-- Verified 2026-10-07 against 72398de (plus provider-portability docs 0028, revised after skeptic review, and a ChatSyncs docs review, rounds 1 and 2, unverified in practice). Managed by bmad-project-context; edits inside this block are replaced on refresh. Keep anything you want preserved outside the markers. -->
+<!-- Verified 2026-10-09 against 72398de (plus provider-portability docs 0028, revised after skeptic review, and a ChatSyncs docs review, rounds 1 and 2, unverified in practice). Managed by bmad-project-context; edits inside this block are replaced on refresh. Keep anything you want preserved outside the markers. -->
 
 ## Vyavsay Assist v2
 
-WhatsApp AI sales copilot for small businesses (first vertical: used cars). Python/FastAPI, LangGraph agent, Supabase/Postgres, ChatSyncs for WhatsApp. No code yet; the planning docs are `docs/01-prd.md` to `docs/05-roadmap.md`, decisions in `docs/adr/`, audit in `../docs/production-plan/`.
+WhatsApp AI sales copilot for small businesses (first vertical: used cars). Python/FastAPI, LangGraph agent, Supabase/Postgres, ChatSyncs for WhatsApp. Code is in progress (skeleton, seam v0, fake provider, red RLS suite); the planning docs are `docs/01-prd.md` to `docs/05-roadmap.md`, decisions in `docs/adr/`, audit in `../docs/production-plan/`.
 
 ## Policy
 
@@ -22,7 +22,9 @@ WhatsApp AI sales copilot for small businesses (first vertical: used cars). Pyth
 
 ## Running and verifying
 
-- TODO: no code exists. Add commands on the first refresh after the first service lands (stack: Python, FastAPI, pytest, Supabase CLI).
+- From `vyavsay-v2/`: `uv sync`, then `uv run ruff check . && uv run mypy app && uv run lint-imports && uv run pytest --ignore=tests/rls`. Python is pinned to 3.12 by `uv`.
+- `tests/rls` is red on purpose (written first, waiting for the schema); CI treats it as non-blocking. DB tests need Postgres 17 with pgvector and `VYAVSAY_TEST_DATABASE_URL` pointing at a dedicated local server, because the harness drops project roles cluster-wide.
+- Who owns which folder, and the work list: `docs/START-HERE.md`, `docs/BACKLOG.md`.
 
 ## Conventions that differ from defaults
 
